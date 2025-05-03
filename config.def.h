@@ -16,14 +16,13 @@ static const char dwmdir_conf[]     = "~/.config/dwm";
 static const char autostart[]       = "autostart.sh";
 static const char *fonts[]          = { "Source Code Pro:size=10" };
 static const char dmenufont[]       = "Source Code Pro:size=10";
-static const char col_black[]       = "#000000";
-static const char col_white[]       = "#bbbbbb";
-static const char col_blue[]        = "#4444aa";
+
+#include "colors.h"
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_white, col_black, col_black },
-	[SchemeSel]   = { col_white, col_blue,  col_blue  },
-	[SchemeTitle] = { col_white, col_black, col_black },
+	/*                fg            bg            border   */
+	[SchemeNorm]  = { col_norm_fg,  col_norm_bg,  col_norm_border  },
+	[SchemeSel]   = { col_sel_fg,   col_sel_bg,   col_sel_border   },
+	[SchemeTitle] = { col_title_fg, col_title_bg, col_title_border },
 };
 
 /* tagging */
@@ -66,10 +65,10 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-	"-nb", col_black,
-	"-nf", col_white,
-	"-sb", col_blue,
-	"-sf", col_white, NULL };
+	"-nb", col_dmenu_norm_bg,
+	"-nf", col_dmenu_norm_fg,
+	"-sb", col_dmenu_sel_bg,
+	"-sf", col_dmenu_sel_fg, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {

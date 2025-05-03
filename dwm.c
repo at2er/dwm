@@ -1709,7 +1709,7 @@ void
 runautostart(void)
 {
 	char *path = ecalloc(1, strlen(dwmdir_conf) + strlen(autostart) + 4);
-	if (sprintf(path, "%s/%s &", dwmdir_conf, autostart) <= 0) {
+	if (sprintf(path, "zsh %s/%s &", dwmdir_conf, autostart) <= 0) {
 		free(path);
 		return;
 	}
